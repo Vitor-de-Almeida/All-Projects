@@ -63,14 +63,125 @@ h1, h2, h3 {
     padding: 1rem;
 }
 
-.languages h2 {
+.language-item {
     display: flex;
-    padding-top: 0.5rem;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    border-radius: 0.5rem;
-    font-weight: 500;
-    background-color: var(--background-color-focus);
+    padding: 1rem;
     border-radius: 1rem;
+    background-color: var(--background-color-focus);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.language-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    background-color: var(--background-color-background);
+}
+
+.language-item:hover .tech-icon {
+    transform: scale(1.2);
+    filter: brightness(1.2);
+}
+
+.tech-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.language-item h2 {
+    font-size: var(--font-size-small);
+    font-weight: 500;
+    text-align: center;
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Cores específicas para cada tecnologia */
+.tailwind-icon {
+    filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.4));
+}
+
+.js-icon {
+    filter: drop-shadow(0 0 8px rgba(247, 223, 30, 0.4));
+}
+
+.nodejs-icon {
+    filter: drop-shadow(0 0 8px rgba(51, 153, 51, 0.4));
+}
+
+.php-icon {
+    filter: drop-shadow(0 0 8px rgba(119, 123, 180, 0.4));
+}
+
+/* Efeito de brilho ao passar o mouse */
+.language-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.language-item:hover::before {
+    left: 100%;
+}
+
+/* Animação de pulsação sutil para os ícones */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.tech-icon {
+    animation: pulse 3s ease-in-out infinite;
+}
+
+/* Pausar animação no hover */
+.language-item:hover .tech-icon {
+    animation-play-state: paused;
+}
+
+/* Efeito de gradiente de fundo para cada tecnologia */
+.tailwind-icon {
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(6, 182, 212, 0.05));
+    border-radius: 50%;
+    padding: 8px;
+}
+
+.js-icon {
+    background: linear-gradient(135deg, rgba(247, 223, 30, 0.1), rgba(247, 223, 30, 0.05));
+    border-radius: 50%;
+    padding: 8px;
+}
+
+.nodejs-icon {
+    background: linear-gradient(135deg, rgba(51, 153, 51, 0.1), rgba(51, 153, 51, 0.05));
+    border-radius: 50%;
+    padding: 8px;
+}
+
+.php-icon {
+    background: linear-gradient(135deg, rgba(119, 123, 180, 0.1), rgba(119, 123, 180, 0.05));
+    border-radius: 50%;
+    padding: 8px;
 }
 
 #right-sidebar {
